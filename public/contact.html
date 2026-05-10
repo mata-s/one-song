@@ -31,9 +31,13 @@
     }
 
     main {
-      width: min(760px, calc(100% - 32px));
+      width: min(820px, calc(100% - 32px));
       margin: 0 auto;
       padding: 56px 0 72px;
+    }
+
+    .hero {
+      margin-bottom: 28px;
     }
 
     .app-name {
@@ -62,7 +66,7 @@
       font-size: 15px;
     }
 
-        .nav {
+    .nav {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -91,11 +95,12 @@
 
 
     section {
-      padding: 24px;
+      padding: 26px;
       border: 1px solid var(--line);
-      border-radius: 24px;
+      border-radius: 28px;
       background: var(--card);
       backdrop-filter: blur(16px);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
     }
 
     h2 {
@@ -114,10 +119,11 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      margin-top: 8px;
-      padding: 14px 18px;
-      border-radius: 18px;
-      background: rgba(246, 214, 199, 0.12);
+      margin-top: 10px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(246, 214, 199, 0.13);
+      border: 1px solid rgba(246, 214, 199, 0.18);
       color: var(--accent);
       text-decoration: none;
       font-weight: 800;
@@ -126,6 +132,17 @@
 
     .mail:hover {
       background: rgba(246, 214, 199, 0.18);
+    }
+
+    .hint {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(248, 250, 252, 0.58);
+      font-size: 13px;
+      line-height: 1.7;
     }
 
     .note {
@@ -144,22 +161,30 @@
 </head>
 <body>
   <main>
-    <div class="app-name">OneSong</div>
-    <h1>お問い合わせ</h1>
-    <p class="lead">OneSongに関するご質問、不具合報告、ご要望はこちらからご連絡ください。</p>
+    <div class="hero">
+      <div class="app-name">OneSong</div>
+      <h1>お問い合わせ</h1>
+      <p class="lead">OneSongに関するご質問、不具合報告、ご要望はこちらからご連絡ください。</p>
 
-    <div class="nav">
-      <a href="/">ホーム</a>
-      <a href="/privacy.html">プライバシーポリシー</a>
-      <a href="/terms.html">利用規約</a>
+      <div class="nav">
+        <a href="/">ホーム</a>
+        <a href="/privacy.html">プライバシーポリシー</a>
+        <a href="/terms.html">利用規約</a>
+      </div>
     </div>
-
 
     <section>
       <h2>メールでのお問い合わせ</h2>
-      <p>以下のメールアドレス宛にご連絡ください。</p>
+      <p>不具合報告、ご要望、その他のお問い合わせは、以下のメールアドレス宛にご連絡ください。</p>
       <a class="mail" href="mailto:splingnew@gmail.com">splingnew@gmail.com</a>
-      <p class="note">内容によっては返信にお時間をいただく場合があります。</p>
+      <div class="hint">
+        お問い合わせの際は、可能であればご利用端末、OSバージョン、発生した画面や状況を添えていただけると確認がスムーズです。
+      </div>
+
+      <p class="note">
+        投稿内容や権利に関する削除依頼についても、上記メールアドレスよりご連絡ください。<br />
+        内容によっては返信にお時間をいただく場合があります。
+      </p>
     </section>
 
     <p class="footer">© OneSong</p>
