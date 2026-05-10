@@ -1,433 +1,284 @@
+
+
 <!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>財布の余命 / Wallet Days Privacy Policy</title>
+  <title>プライバシーポリシー | OneSong</title>
   <style>
     :root {
-      --maxw: 760px;
-      --text: #333;
-      --muted: #666;
-      --border: #eee;
-      --chip-bg: #f7f7fb;
-      --chip-active-bg: #efe9ff;
-      --chip-active-text: #3b2a6f;
+      color-scheme: dark;
+      --bg: #111827;
+      --card: rgba(255, 255, 255, 0.06);
+      --text: #f8fafc;
+      --muted: rgba(248, 250, 252, 0.68);
+      --line: rgba(255, 255, 255, 0.12);
+      --accent: #f6d6c7;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
       margin: 0;
-      padding: 18px;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(246, 214, 199, 0.16), transparent 34%),
+        linear-gradient(180deg, #1c2740 0%, #111827 100%);
       color: var(--text);
-      background: #fff;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
-    .wrap {
-      max-width: var(--maxw);
+    main {
+      width: min(880px, calc(100% - 32px));
       margin: 0 auto;
+      padding: 56px 0 72px;
     }
 
-    header {
-      text-align: center;
-      margin: 10px 0 18px;
+    .hero {
+      margin-bottom: 28px;
     }
 
-    header h1 {
-      font-size: 22px;
+    .app-name {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    h1 {
+      margin: 20px 0 8px;
+      font-size: clamp(32px, 7vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+    }
+
+    .updated {
       margin: 0;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-    }
-
-    header p {
-      margin: 6px 0 0;
       color: var(--muted);
       font-size: 14px;
     }
 
-    .topnav {
+        .nav {
       display: flex;
-      gap: 0.75rem;
       flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 0;
-      margin-bottom: 14px;
-      border-bottom: 1px solid var(--border);
+      gap: 10px;
+      margin-top: 18px;
     }
 
-    .topnav a {
-      display: inline-block;
-      padding: 0.35rem 0.65rem;
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
       border-radius: 999px;
-      background: var(--chip-bg);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text);
-      font-size: 0.95rem;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition: background 0.2s ease;
+    }
+
+    .nav a:hover {
+      background: rgba(255, 255, 255, 0.10);
       text-decoration: none;
     }
 
-    .topnav a[aria-current="page"] {
-      background: var(--chip-active-bg);
-      color: var(--chip-active-text);
-      font-weight: 800;
-    }
 
     section {
-      padding: 10px 0;
+      margin-top: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--card);
+      backdrop-filter: blur(16px);
     }
 
     h2 {
-      margin: 0 0 10px;
-      font-size: 16px;
-      font-weight: 900;
+      margin: 0 0 12px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
     }
 
     p {
-      margin: 0 0 10px;
-      font-size: 14.5px;
-      color: var(--text);
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    p:last-child {
+      margin-bottom: 0;
     }
 
     ul {
       margin: 0;
-      padding-left: 1.1rem;
+      padding-left: 1.2em;
+      color: var(--muted);
     }
 
-    li {
-      margin: 0 0 8px;
-      font-size: 14.5px;
-    }
-
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 14px 0;
-    }
-
-    .lang-section {
-      padding-top: 4px;
-    }
-
-    .lang-label {
-      display: inline-block;
-      margin: 18px 0 10px;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      background: var(--chip-active-bg);
-      color: var(--chip-active-text);
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .lang-toggle {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      margin: 10px 0 14px;
-    }
-
-    .lang-toggle button {
-      border: 1px solid var(--border);
-      background: var(--chip-bg);
-      color: var(--text);
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .lang-toggle button.active {
-      background: var(--chip-active-bg);
-      color: var(--chip-active-text);
-    }
-
-    .hidden { display: none; }
-
-    .small {
-      color: #777;
-      font-size: 12px;
-      text-align: center;
-      margin-top: 18px;
+    li + li {
+      margin-top: 6px;
     }
 
     a {
-      color: #0066cc;
+      color: var(--accent);
+      text-decoration: none;
     }
 
-    @media (max-width: 480px) {
-      body { padding: 14px; }
-      header h1 { font-size: 20px; }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 28px;
+      color: rgba(248, 250, 252, 0.46);
+      font-size: 13px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-
-    <nav class="topnav" aria-label="サイト内ナビゲーション">
-      <a href="./index.html"><span data-ja="ホーム" data-en="Home">ホーム</span></a>
-      <a href="./privacy.html" aria-current="page"><span data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</span></a>
-      <a href="./terms.html"><span data-ja="利用規約" data-en="Terms of Use">利用規約</span></a>
-      <a href="./contact.html"><span data-ja="お問い合わせ" data-en="Contact">お問い合わせ</span></a>
-    </nav>
-
-    <header>
-      <h1><span data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</span></h1>
-      <p><span data-ja="財布の余命" data-en="Wallet Days">財布の余命</span></p>
-    </header>
-    <div class="lang-toggle">
-      <button id="btn-ja" onclick="setLang('ja')">日本語</button>
-      <button id="btn-en" onclick="setLang('en')">English</button>
+  <main>
+    <div class="hero">
+      <div class="app-name">OneSong</div>
+      <h1>プライバシーポリシー</h1>
+      <p class="updated">最終更新日：2026年5月10日</p>
     </div>
 
-    <div id="section-ja" class="lang-section" lang="ja">
-      <span class="lang-label">日本語</span>
+      <div class="nav">
+        <a href="/">ホーム</a>
+        <a href="/contact.html">お問い合わせ</a>
+        <a href="/terms.html">利用規約</a>
+      </div>
 
-      <section>
-        <p>本プライバシーポリシー（以下「本ポリシー」）は、財布の余命（以下「本サービス」）におけるユーザー情報の取扱いを定めるものです。</p>
-      </section>
+    <section>
+      <h2>1. はじめに</h2>
+      <p>
+        OneSong（以下「本アプリ」といいます）は、ユーザーがその日の一曲を投稿・閲覧し、あとで聴く曲を保存できるアプリです。
+        本ポリシーでは、本アプリにおける情報の取り扱いについて説明します。
+      </p>
+    </section>
 
-      <div class="divider"></div>
+    <section>
+      <h2>2. 取得する情報</h2>
+      <p>本アプリでは、以下の情報を取得・保存する場合があります。</p>
+      <ul>
+        <li>匿名認証により発行されるユーザーID</li>
+        <li>ユーザーが設定した表示名</li>
+        <li>投稿した曲名、アーティスト名、アルバム名、ジャケット画像URL、メモ</li>
+        <li>後で聴くに保存した曲の情報</li>
+        <li>投稿の閲覧履歴、閲覧数に関する情報</li>
+        <li>データ引き継ぎのために発行される引き継ぎコードに関する情報</li>
+        <li>お問い合わせ時にユーザーが任意で提供する情報</li>
+      </ul>
+    </section>
 
-      <section>
-        <h2>1. 取得する情報</h2>
-        <ul>
-          <li>アカウント情報（匿名ID、メールアドレスなど）</li>
-          <li>支出・予算に関する入力データ（支出額、カテゴリ、メモ、作成日時など）</li>
-          <li>端末・利用情報（アプリの動作に必要な範囲の端末情報、ログなど）</li>
-          <li>購入・課金情報（プレミアムの購入状態、取引識別子など）※カード情報は運営者が取得しません</li>
-          <li>広告識別子など（広告配信を行う場合）</li>
-        </ul>
-      </section>
+    <section>
+      <h2>3. 利用目的</h2>
+      <p>取得した情報は、以下の目的で利用します。</p>
+      <ul>
+        <li>投稿、アーカイブ、後で聴くなどの機能を提供するため</li>
+        <li>ユーザーごとのデータを識別・管理するため</li>
+        <li>データ引き継ぎ機能を提供するため</li>
+        <li>不正利用や迷惑行為を防止するため</li>
+        <li>お問い合わせへの対応のため</li>
+        <li>アプリの品質改善、機能改善のため</li>
+      </ul>
+    </section>
 
-      <div class="divider"></div>
+    <section>
+      <h2>4. 匿名認証について</h2>
+      <p>
+        本アプリは、Firebase Authentication の匿名認証を利用しています。
+        ユーザーはメールアドレス等を登録せずに利用できますが、アプリ内では匿名のユーザーIDによりデータが管理されます。
+      </p>
+    </section>
 
-      <section>
-        <h2>2. 利用目的</h2>
-        <ul>
-          <li>本サービスの提供、本人確認、認証のため</li>
-          <li>支出・予算データの保存、表示、同期、バックアップのため</li>
-          <li>プレミアム機能の提供、購入状態の確認、購入復元のため</li>
-          <li>不正利用の防止、セキュリティ確保のため</li>
-          <li>お問い合わせ対応、重要なお知らせの通知のため</li>
-          <li>品質改善（クラッシュ・不具合解析など）のため</li>
-          <li>広告の表示および効果測定（実施する場合）のため</li>
-        </ul>
-      </section>
+    <section>
+      <h2>5. データの保存先</h2>
+      <p>
+        本アプリのデータは、Google Firebase（Firebase Authentication、Cloud Firestore等）を利用して保存・管理されます。
+        Firebaseの提供元であるGoogle LLCにより、情報が処理される場合があります。
+      </p>
+    </section>
 
-      <div class="divider"></div>
+    <section>
+      <h2>6. 第三者提供</h2>
+      <p>
+        法令に基づく場合を除き、ユーザーの情報を本人の同意なく第三者に提供することはありません。
+        ただし、アプリ機能の提供に必要な範囲で、Firebase等の外部サービスを利用します。
+      </p>
+    </section>
 
-      <section>
-        <h2>3. 外部サービスの利用</h2>
-        <p>本サービスは、機能提供のために以下の外部サービスを利用する場合があります。外部サービスの提供者が取得する情報の範囲や取扱いは、各社のプライバシーポリシーをご確認ください。</p>
-        <ul>
-          <li><strong>Supabase</strong>（認証・データベース）</li>
-          <li><strong>RevenueCat</strong>（サブスクリプション管理）</li>
-          <li><strong>Google AdMob</strong>（広告配信）※広告を表示する場合</li>
-        </ul>
-      </section>
+    <section>
+      <h2>7. 公開される情報</h2>
+      <p>
+        ユーザーが投稿した曲名、アーティスト名、メモ、表示名などは、アプリ内の他のユーザーに表示される場合があります。
+        個人情報や公開したくない内容を投稿しないようご注意ください。
+      </p>
+    </section>
 
-      <div class="divider"></div>
+    <section>
+      <h2>8. 外部サービスへのリンク</h2>
+      <p>
+        本アプリには、Spotify、Apple Music、YouTube、Amazon Music等の外部サービスで曲を検索するためのリンクが含まれる場合があります。
+        外部サービス上での情報の取り扱いについては、各サービスのプライバシーポリシーをご確認ください。
+      </p>
+    </section>
 
-      <section>
-        <h2>4. 第三者提供</h2>
-        <p>運営者は、法令に基づく場合を除き、ユーザー情報を第三者に提供しません。ただし、上記の外部サービスを利用する際、当該サービス提供のために必要な範囲で情報が送信される場合があります。</p>
-      </section>
+    <section>
+      <h2>9. アカウント削除</h2>
+      <p>
+        ユーザーは、アプリ内の設定画面からアカウント削除を行うことができます。
+        アカウント削除を行うと、投稿、後で聴く、プロフィールなど、このアカウントに紐づくデータが削除されます。
+        削除後の復元はできません。
+      </p>
+    </section>
 
-      <div class="divider"></div>
+    <section>
+      <h2>10. セキュリティ</h2>
+      <p>
+        本アプリは、ユーザー情報の漏えい、滅失、改ざん等を防止するため、適切な管理に努めます。
+        ただし、インターネット通信において完全な安全性を保証するものではありません。
+      </p>
+    </section>
 
-      <section>
-        <h2>5. 保存期間</h2>
-        <p>ユーザー情報は、利用目的の達成に必要な期間保存します。ユーザーがアプリを削除した場合でも、サーバー側のデータが直ちに消去されるとは限りません。削除をご希望の場合は、お問い合わせ先よりご連絡ください。</p>
-      </section>
+    <section>
+      <h2>11. 未成年の利用について</h2>
+      <p>
+        未成年の方が本アプリを利用する場合は、保護者の同意を得たうえで利用してください。
+      </p>
+    </section>
 
-      <div class="divider"></div>
+    <section>
+      <h2>12. ポリシーの変更</h2>
+      <p>
+        本ポリシーは、必要に応じて変更される場合があります。
+        重要な変更がある場合は、アプリ内または本ページ上でお知らせします。
+      </p>
+    </section>
 
-      <section>
-        <h2>6. ユーザーの権利</h2>
-        <ul>
-          <li>アプリ内で入力した情報は、アプリ内の機能により編集または削除できる場合があります。</li>
-          <li>購入状態の復元は、アプリ内の「購入を復元」から行えます。</li>
-          <li>データ削除をご希望の場合は、お問い合わせ先までご連絡ください。</li>
-        </ul>
-      </section>
+    <section>
+      <h2>13. お問い合わせ</h2>
+      <p>
+        本ポリシーに関するお問い合わせは、以下の窓口までご連絡ください。
+      </p>
+      <p>
+        お問い合わせ先：<a href="mailto:support@example.com">support@example.com</a>
+      </p>
+    </section>
 
-      <div class="divider"></div>
-
-      <section>
-        <h2>7. セキュリティ</h2>
-        <p>運営者は、ユーザー情報の漏えい、滅失または毀損の防止その他の安全管理のために、合理的な措置を講じます。</p>
-      </section>
-
-      <div class="divider"></div>
-
-      <section>
-        <h2>8. 未成年の利用</h2>
-        <p>未成年のユーザーは、親権者など法定代理人の同意を得たうえで本サービスを利用してください。</p>
-      </section>
-
-      <div class="divider"></div>
-
-      <section>
-        <h2>9. 本ポリシーの変更</h2>
-        <p>運営者は、必要に応じて本ポリシーを変更できます。変更後の内容は、本サービス上での掲示または運営者が適切と判断する方法で周知した時点から効力を生じます。</p>
-      </section>
-
-      <div class="divider"></div>
-
-      <section>
-        <h2>10. お問い合わせ</h2>
-        <p>本サービスに関するお問い合わせやデータ削除のご要望は、以下までご連絡ください。</p>
-        <p>お問い合わせ窓口（運営者メール）：<a href="mailto:splingnew@gmail.com">splingnew@gmail.com</a><br />※ ご連絡の際は、表示名（アプリ内で設定している名前）を記載いただくと対応がスムーズです。</p>
-      </section>
-    </div>
-
-    <div class="divider"></div>
-
-    <div id="section-en" class="lang-section" lang="en">
-      <span class="lang-label">English</span>
-
-      <section>
-        <p>This Privacy Policy explains how Wallet Days ("the Service") handles user information.</p>
-      </section>
-
-      <div class="divider"></div>
-
-      <section>
-        <h2>1. Information Collected</h2>
-        <ul>
-          <li>Account information (anonymous ID, email address, etc.)</li>
-          <li>Expense and budget data entered by the user (amounts, categories, notes, creation dates, etc.)</li>
-          <li>Device and usage information (device information and logs necessary for app operation)</li>
-          <li>Purchase and billing information (premium purchase status, transaction identifiers, etc.) Credit card information is not obtained by the operator.</li>
-          <li>Advertising identifiers, etc. (if ads are displayed)</li>
-        </ul>
-      </section>
-
-      <div class="divider"></div>
-
-      <section>
-        <h2>2. Purpose of Use</h2>
-        <ul>
-          <li>To provide the Service, verify user identity, and authenticate users</li>
-          <li>To save, display, synchronize, and back up expense and budget data</li>
-          <li>To provide premium features, check purchase status, and restore purchases</li>
-          <li>To prevent unauthorized use and ensure security</li>
-          <li>To respond to inquiries and notify users of important information</li>
-          <li>To improve quality, including crash and bug analysis</li>
-          <li>To display advertisements and measure their effectiveness, if applicable</li>
-        </ul>
-      </section>
-
-      <div class="divider"></div>
-
-      <section>
-        <h2>3. Use of Third-Party Services</h2>
-        <p>The Service may use the following third-party services for functionality. Please refer to each provider's privacy policy for details on the information they collect and how it is handled.</p>
-        <ul>
-          <li><strong>Supabase</strong> (authentication, database)</li>
-          <li><strong>RevenueCat</strong> (subscription management)</li>
-          <li><strong>Google AdMob</strong> (ad delivery, if ads are displayed)</li>
-        </ul>
-      </section>
-
-      <div class="divider"></div>
-
-      <section>
-        <h2>4. Provision to Third Parties</h2>
-        <p>We do not provide user information to third parties except as required by law. However, when using the above third-party services, information may be transmitted to the extent necessary for their provision.</p>
-      </section>
-
-      <div class="divider"></div>
-
-      <section>
-        <h2>5. Data Retention</h2>
-        <p>User information is retained for as long as necessary to achieve the purposes described above. Even if the user deletes the app, server-side data may not be immediately deleted. If you wish to have your data deleted, please contact us.</p>
-      </section>
-
-      <div class="divider"></div>
-
-      <section>
-        <h2>6. User Rights</h2>
-        <ul>
-          <li>Information entered in the app may be edited or deleted using in-app features where available.</li>
-          <li>You can restore your purchase status from "Restore Purchases" within the app.</li>
-          <li>If you wish to request data deletion, please contact us.</li>
-        </ul>
-      </section>
-
-      <div class="divider"></div>
-
-      <section>
-        <h2>7. Security</h2>
-        <p>We take reasonable measures to prevent leakage, loss, or damage of user information and to ensure its safe management.</p>
-      </section>
-
-      <div class="divider"></div>
-
-      <section>
-        <h2>8. Use by Minors</h2>
-        <p>Minors must obtain the consent of a parent or legal guardian before using the Service.</p>
-      </section>
-
-      <div class="divider"></div>
-
-      <section>
-        <h2>9. Changes to This Policy</h2>
-        <p>We may change this policy as necessary. The revised policy will take effect when posted in the app or otherwise announced as deemed appropriate by the operator.</p>
-      </section>
-
-      <div class="divider"></div>
-
-      <section>
-        <h2>10. Contact</h2>
-        <p>For inquiries or data deletion requests, please contact:</p>
-        <p>Operator email: <a href="mailto:splingnew@gmail.com">splingnew@gmail.com</a><br />For smooth correspondence, please include your display name as set in the app.</p>
-      </section>
-    </div>
-
-    <p class="small"><span data-ja="最終更新日：2026年" data-en="Last updated: 2026">最終更新日：2026年</span></p>
-
-  </div>
-<script>
-  function setLang(lang) {
-    const ja = document.getElementById('section-ja');
-    const en = document.getElementById('section-en');
-    const btnJa = document.getElementById('btn-ja');
-    const btnEn = document.getElementById('btn-en');
-
-    document.documentElement.lang = lang;
-    document.querySelectorAll('[data-ja][data-en]').forEach((el) => {
-      el.textContent = lang === 'ja' ? el.dataset.ja : el.dataset.en;
-    });
-
-    if (lang === 'ja') {
-      ja.classList.remove('hidden');
-      en.classList.add('hidden');
-      btnJa.classList.add('active');
-      btnEn.classList.remove('active');
-    } else {
-      en.classList.remove('hidden');
-      ja.classList.add('hidden');
-      btnEn.classList.add('active');
-      btnJa.classList.remove('active');
-    }
-
-    try { localStorage.setItem('lang', lang); } catch(e) {}
-  }
-
-  (function initLang() {
-    let lang = 'ja';
-    try { lang = localStorage.getItem('lang') || lang; } catch(e) {}
-
-    if (!localStorage.getItem('lang')) {
-      const nav = (navigator.language || navigator.userLanguage || 'ja').toLowerCase();
-      if (nav.startsWith('en')) lang = 'en';
-    }
-
-    setLang(lang);
-  })();
-</script>
+    <p class="footer">© OneSong</p>
+  </main>
 </body>
 </html>
