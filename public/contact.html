@@ -3,164 +3,262 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>お問い合わせ | OneSong</title>
+  <title>お問い合わせ / Contact - 財布の余命 / Wallet Days</title>
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #111827;
-      --card: rgba(255, 255, 255, 0.06);
-      --text: #f8fafc;
-      --muted: rgba(248, 250, 252, 0.68);
-      --line: rgba(255, 255, 255, 0.12);
-      --accent: #f6d6c7;
-    }
-
-    * {
-      box-sizing: border-box;
+      --maxw: 760px;
+      --text: #333;
+      --muted: #666;
+      --border: #eee;
+      --chip-bg: #f7f7fb;
+      --chip-active-bg: #efe9ff;
+      --chip-active-text: #3b2a6f;
     }
 
     body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+        "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
       margin: 0;
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(246, 214, 199, 0.16), transparent 34%),
-        linear-gradient(180deg, #1c2740 0%, #111827 100%);
+      padding: 18px;
       color: var(--text);
-      line-height: 1.8;
+      background: #fff;
+      line-height: 1.7;
     }
 
-    main {
-      width: min(760px, calc(100% - 32px));
+    .wrap {
+      max-width: var(--maxw);
       margin: 0 auto;
-      padding: 56px 0 72px;
     }
 
-    .app-name {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--accent);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      background: rgba(255, 255, 255, 0.05);
+    header {
+      text-align: center;
+      margin: 10px 0 18px;
     }
 
-    h1 {
-      margin: 20px 0 8px;
-      font-size: clamp(32px, 7vw, 48px);
-      line-height: 1.15;
-      letter-spacing: -0.04em;
+    header h1 {
+      font-size: 22px;
+      margin: 0;
+      font-weight: 800;
+      letter-spacing: 0.2px;
     }
 
-    .lead {
-      margin: 0 0 28px;
+    header p {
+      margin: 6px 0 0;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 14px;
     }
 
-    .nav {
+    .topnav {
       display: flex;
+      gap: 0.75rem;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .nav a {
-      display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      transition: background 0.2s ease;
+      padding: 0.75rem 0;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .nav a:hover {
-      background: rgba(255, 255, 255, 0.10);
+    .topnav a {
+      display: inline-block;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: var(--chip-bg);
+      color: var(--text);
+      font-size: 0.95rem;
       text-decoration: none;
+    }
+
+    .topnav a[aria-current="page"] {
+      background: var(--chip-active-bg);
+      color: var(--chip-active-text);
+      font-weight: 800;
     }
 
     section {
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: var(--card);
-      backdrop-filter: blur(16px);
+      padding: 10px 0;
     }
 
     h2 {
-      margin: 0 0 12px;
-      font-size: 20px;
-      letter-spacing: -0.02em;
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 900;
     }
 
     p {
-      margin: 0 0 14px;
-      color: var(--muted);
+      margin: 0 0 10px;
+      font-size: 14.5px;
     }
 
-    .mail {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      margin-top: 8px;
-      padding: 14px 18px;
-      border-radius: 18px;
-      background: rgba(246, 214, 199, 0.12);
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 800;
-      word-break: break-all;
+    ul {
+      margin: 0;
+      padding-left: 1.1rem;
     }
 
-    .mail:hover {
-      background: rgba(246, 214, 199, 0.18);
+    li {
+      margin: 0 0 8px;
+      font-size: 14.5px;
     }
 
-    .note {
-      margin-top: 18px;
-      font-size: 13px;
-      color: rgba(248, 250, 252, 0.52);
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 14px 0;
     }
 
-    .footer {
-      margin-top: 28px;
-      color: rgba(248, 250, 252, 0.46);
-      font-size: 13px;
+    .lang-section { padding-top: 4px; }
+    .lang-label {
+      display: inline-block; margin: 18px 0 10px; padding: 0.25rem 0.6rem;
+      border-radius: 999px; background: var(--chip-active-bg);
+      color: var(--chip-active-text); font-size: 13px; font-weight: 800;
+    }
+    .lang-toggle { display:flex; gap:8px; justify-content:center; margin:10px 0 14px; }
+    .lang-toggle button {
+      border:1px solid var(--border); background:var(--chip-bg); color:var(--text);
+      border-radius:999px; padding:6px 12px; font-weight:700; cursor:pointer;
+    }
+    .lang-toggle button.active { background:var(--chip-active-bg); color:var(--chip-active-text); }
+    .hidden { display:none; }
+
+    .small {
+      color: #777;
+      font-size: 12px;
       text-align: center;
+      margin-top: 18px;
+    }
+
+    a {
+      color: #0066cc;
+    }
+
+    .mail-box {
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 14px; }
+      header h1 { font-size: 20px; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <div class="app-name">OneSong</div>
-    <h1>お問い合わせ</h1>
-    <p class="lead">OneSongに関するご質問、不具合報告、ご要望はこちらからご連絡ください。</p>
+  <div class="wrap">
 
-    <div class="nav">
-      <a href="/">ホーム</a>
-      <a href="/privacy.html">プライバシーポリシー</a>
-      <a href="/terms.html">利用規約</a>
+    <nav class="topnav" aria-label="サイト内ナビゲーション">
+      <a href="./index.html"><span data-ja="ホーム" data-en="Home">ホーム</span></a>
+      <a href="./privacy.html"><span data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</span></a>
+      <a href="./terms.html"><span data-ja="利用規約" data-en="Terms of Use">利用規約</span></a>
+      <a href="./contact.html" aria-current="page"><span data-ja="お問い合わせ" data-en="Contact">お問い合わせ</span></a>
+    </nav>
+
+    <header>
+      <a href="./index.html" style="text-decoration: none; color: inherit; display: inline-block;">
+        <h1><span data-ja="お問い合わせ" data-en="Contact">お問い合わせ</span></h1>
+        <p><span data-ja="財布の余命" data-en="Wallet Days">財布の余命</span></p>
+      </a>
+    </header>
+
+    <div class="lang-toggle">
+      <button id="btn-ja" onclick="setLang('ja')">日本語</button>
+      <button id="btn-en" onclick="setLang('en')">English</button>
     </div>
 
-    <section>
-      <h2>メールでのお問い合わせ</h2>
-      <p>以下のメールアドレス宛にご連絡ください。</p>
-      <a class="mail" href="mailto:splingnew@gmail.com">splingnew@gmail.com</a>
-      <p class="note">内容によっては返信にお時間をいただく場合があります。</p>
-    </section>
+    <div id="section-ja" class="lang-section" lang="ja">
+      <span class="lang-label">日本語</span>
 
-    <p class="footer">© OneSong</p>
-  </main>
+      <section>
+        <p>財布の余命に関するご質問、ご要望、不具合のご報告などは、以下のメールアドレスまでご連絡ください。</p>
+      </section>
+
+      <section class="mail-box">
+        <p>
+          お問い合わせ窓口（運営者メール）：<br />
+          <strong><a href="mailto:splingnew@gmail.com">splingnew@gmail.com</a></strong>
+        </p>
+        <p class="small" style="text-align:left;">※ ご連絡の際は、可能であれば以下の情報をご記載ください。</p>
+        <ul>
+          <li>表示名（アプリ内で設定している名前）</li>
+          <li>ご利用端末（iPhone / iPad など）</li>
+          <li>お問い合わせ内容</li>
+        </ul>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2>データ削除のご依頼について</h2>
+        <p>アカウントに紐づくデータの削除をご希望の場合は、上記メールアドレス宛にご連絡ください。</p>
+        <p>件名に <strong>「データ削除依頼」</strong> と明記のうえ、本文にアプリ内の表示名をご記載ください。</p>
+      </section>
+    </div>
+
+    <div id="section-en" class="lang-section" lang="en">
+      <span class="lang-label">English</span>
+
+      <section>
+        <p>For questions, requests, or bug reports regarding Wallet Days, please contact us at the email address below.</p>
+      </section>
+
+      <section class="mail-box">
+        <p>
+          Contact email:<br />
+          <strong><a href="mailto:splingnew@gmail.com">splingnew@gmail.com</a></strong>
+        </p>
+        <p class="small" style="text-align:left;">Please include the following information if possible:</p>
+        <ul>
+          <li>Your display name (as set in the app)</li>
+          <li>Your device (iPhone / iPad, etc.)</li>
+          <li>Details of your inquiry</li>
+        </ul>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2>Data Deletion Request</h2>
+        <p>If you would like to delete data associated with your account, please contact us at the email address above.</p>
+        <p>Please include <strong>"Data Deletion Request"</strong> in the subject and your display name in the message.</p>
+      </section>
+    </div>
+
+    <p class="small"><span data-ja="最終更新日：2026年" data-en="Last updated: 2026">最終更新日：2026年</span></p>
+
+  </div>
 </body>
+<script>
+  function setLang(lang) {
+    const ja = document.getElementById('section-ja');
+    const en = document.getElementById('section-en');
+    const btnJa = document.getElementById('btn-ja');
+    const btnEn = document.getElementById('btn-en');
+
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-ja][data-en]').forEach((el) => {
+      el.textContent = lang === 'ja' ? el.dataset.ja : el.dataset.en;
+    });
+
+    if (lang === 'ja') {
+      ja.classList.remove('hidden'); en.classList.add('hidden');
+      btnJa.classList.add('active'); btnEn.classList.remove('active');
+    } else {
+      en.classList.remove('hidden'); ja.classList.add('hidden');
+      btnEn.classList.add('active'); btnJa.classList.remove('active');
+    }
+    try { localStorage.setItem('lang', lang); } catch(e) {}
+  }
+
+  (function initLang(){
+    let lang = 'ja'; let saved=null;
+    try { saved = localStorage.getItem('lang'); } catch(e) {}
+    if (saved) lang = saved; else {
+      const nav = (navigator.language||'ja').toLowerCase();
+      if (nav.startsWith('en')) lang='en';
+    }
+    setLang(lang);
+  })();
+</script>
 </html>

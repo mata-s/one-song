@@ -1,287 +1,418 @@
-
-
 <!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OneSong</title>
-  <meta
-    name="description"
-    content="今日の一曲を置いていく音楽アプリ OneSong"
-  />
+  <title>財布の余命</title>
 
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #111827;
-      --card: rgba(255, 255, 255, 0.06);
-      --text: #f8fafc;
-      --muted: rgba(248, 250, 252, 0.70);
-      --line: rgba(255, 255, 255, 0.12);
-      --accent: #f6d6c7;
-    }
-
-    * {
-      box-sizing: border-box;
+      --text: #2b2525;
+      --muted: #6f6767;
+      --border: #eee;
+      --card: #fff;
+      --bg: #fff8f5;
+      --accent: #ff8a65;
+      --chip-bg: #f7f7fb;
+      --chip-active-bg: #efe9ff;
+      --chip-active-text: #3b2a6f;
     }
 
     body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
       margin: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(246, 214, 199, 0.14), transparent 32%),
-        linear-gradient(180deg, #8FAED1 0%, #1E2C45 100%);
+      padding: 18px;
       color: var(--text);
+      background: linear-gradient(180deg, #fff8f5 0%, #ffffff 64%);
+      line-height: 1.7;
     }
 
-    main {
-      width: min(1080px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 32px 0 72px;
+    h1 {
+      font-size: clamp(32px, 8vw, 56px);
+      line-height: 1.12;
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: -0.04em;
     }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 56px;
+    p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 15px;
     }
 
-    .brand {
-      color: var(--accent);
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
+    a {
+      color: inherit;
     }
 
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .wrap { max-width: 760px; margin: 0 auto; }
+    .topnav {
+      display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; justify-content: center;
+      padding: 0.75rem 0; margin-bottom: 14px; border-bottom: 1px solid #eee;
     }
-
-    .nav-links a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      transition: background 0.2s ease;
+    .topnav a {
+      display: inline-block; padding: 0.35rem 0.65rem; border-radius: 999px;
+      background: #f7f7fb; color: #333; font-size: 0.95rem; text-decoration: none;
     }
-
-    .nav-links a:hover {
-      background: rgba(255, 255, 255, 0.10);
-    }
+    .topnav a.active { background: #efe9ff; color: #3b2a6f; font-weight: 800; }
+    header { text-align: center; margin: 10px 0 18px; }
+    header h1 { font-size: 22px; margin: 0; font-weight: 800; }
+    header p { margin: 6px 0 0; color: #666; font-size: 14px; }
+    .lang-toggle { display: flex; gap: 8px; justify-content: center; margin: 10px 0 14px; }
+    .lang-toggle button { border: 1px solid #eee; background: #f7f7fb; color: #333; border-radius: 999px; padding: 6px 12px; font-weight: 700; cursor: pointer; }
+    .lang-toggle button.active { background: #efe9ff; color: #3b2a6f; }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 48px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
       align-items: center;
+      padding: 46px 0 28px;
+      text-align: left;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      padding: 8px 12px;
+      gap: 6px;
+      padding: 6px 12px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--accent);
+      background: rgba(255, 138, 101, 0.12);
+      color: #9a4a31;
+      font-weight: 800;
       font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(48px, 9vw, 92px);
-      line-height: 0.95;
-      letter-spacing: -0.08em;
-    }
-
-    .lead {
-      margin-top: 24px;
-      max-width: 560px;
+    .hero-subtitle {
+      margin-top: 16px;
+      font-size: 18px;
       color: var(--muted);
-      font-size: clamp(16px, 2vw, 19px);
-      line-height: 1.9;
+      max-width: 520px;
     }
 
-    .actions {
+    .hero-actions {
       display: flex;
+      gap: 12px;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 34px;
+      margin-top: 24px;
     }
 
-    .button {
+    .primary-cta,
+    .secondary-cta {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 20px;
+      min-height: 46px;
+      padding: 0 18px;
       border-radius: 999px;
+      font-weight: 900;
       text-decoration: none;
-      font-weight: 800;
-      transition: transform 0.2s ease;
+      border: 1px solid transparent;
     }
 
-    .button:hover {
-      transform: translateY(-1px);
+    .primary-cta {
+      color: white;
+      background: #2b2525;
+      box-shadow: 0 12px 28px rgba(43, 37, 37, 0.18);
     }
 
-    .primary {
-      background: var(--accent);
-      color: #1E2C45;
-    }
-
-    .secondary {
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.06);
+    .secondary-cta {
       color: var(--text);
+      background: white;
+      border-color: var(--border);
     }
 
-    .art {
-      display: flex;
-      justify-content: center;
-    }
-
-    .art-card {
-      width: min(100%, 420px);
-      aspect-ratio: 1;
-      border-radius: 38px;
-      background:
-        radial-gradient(circle at bottom left, rgba(255, 162, 89, 0.95), transparent 28%),
-        linear-gradient(180deg, #0D1C53 0%, #49296C 55%, #C6487A 100%);
+    .phone-card {
       position: relative;
+      width: min(100%, 320px);
+      margin: 0 auto;
+      border-radius: 42px;
+      padding: 18px;
+      background: #1f1b1b;
+      box-shadow: 0 26px 70px rgba(43, 37, 37, 0.24);
+    }
+
+    .phone-screen {
+      border-radius: 30px;
       overflow: hidden;
-      box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.28),
-        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      background: #fff8f5;
+      min-height: 520px;
+      padding: 22px 18px;
     }
 
-    .wave {
-      position: absolute;
-      left: 50%;
-      top: 56%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .bar {
-      width: 8px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #FFE7D8 0%, #FFB7A0 100%);
-      box-shadow: 0 0 18px rgba(255, 210, 190, 0.24);
-    }
-
-    .b1 { height: 20px; opacity: 0.6; }
-    .b2 { height: 42px; opacity: 0.72; }
-    .b3 { height: 78px; opacity: 0.84; }
-    .b4 { height: 124px; }
-    .b5 { height: 78px; opacity: 0.84; }
-    .b6 { height: 42px; opacity: 0.72; }
-    .b7 { height: 20px; opacity: 0.6; }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #FFD6C6;
-      opacity: 0.72;
-    }
-
-    .footer {
-      margin-top: 80px;
+    .mock-header {
       text-align: center;
-      color: rgba(248, 250, 252, 0.48);
+      font-weight: 900;
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+
+    .mock-budget-card,
+    .mock-life-card {
+      border-radius: 24px;
+      background: white;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(43, 37, 37, 0.08);
+      margin-bottom: 14px;
+    }
+
+    .mock-label {
+      color: var(--muted);
+      font-weight: 800;
       font-size: 13px;
     }
 
-    @media (max-width: 860px) {
+    .mock-amount {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin: 8px 0 8px;
+    }
+
+    .mock-progress {
+      height: 9px;
+      border-radius: 999px;
+      background: #e8e4e2;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .mock-progress span {
+      display: block;
+      height: 100%;
+      width: 68%;
+      background: var(--accent);
+      border-radius: 999px;
+    }
+
+    .mock-life-card {
+      background: #fff0e9;
+    }
+
+    .mock-life-title {
+      font-size: 28px;
+      font-weight: 900;
+      margin: 6px 0 4px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 34px 0 30px;
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 8px 22px rgba(43, 37, 37, 0.05);
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: #fff0e9;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .feature-card h2 {
+      font-size: 16px;
+      margin: 0 0 6px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #8b8383;
+      font-size: 12px;
+      padding: 28px 0 10px;
+    }
+
+    @media (max-width: 760px) {
       .hero {
         grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 28px;
       }
-
-      .art {
-        order: -1;
-      }
-
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .hero-subtitle { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .features { grid-template-columns: 1fr; }
+      .phone-card { width: min(100%, 280px); }
+      .phone-screen { min-height: 430px; }
     }
   </style>
 </head>
-<body>
-  <main>
-    <nav>
-      <div class="brand">OneSong</div>
 
-      <div class="nav-links">
-        <a href="/privacy.html">プライバシーポリシー</a>
-        <a href="/terms.html">利用規約</a>
-        <a href="/contact.html">お問い合わせ</a>
-      </div>
+<body>
+  <div class="wrap">
+
+    <nav class="topnav" aria-label="サイト内ナビゲーション">
+      <a id="nav-privacy" href="./privacy.html"><span data-ja="プライバシーポリシー" data-en="Privacy Policy">プライバシーポリシー</span></a>
+      <a id="nav-terms" href="./terms.html"><span data-ja="利用規約" data-en="Terms of Use">利用規約</span></a>
+      <a id="nav-contact" href="./contact.html"><span data-ja="お問い合わせ" data-en="Contact">お問い合わせ</span></a>
     </nav>
 
-    <section class="hero">
-      <div>
-        <div class="eyebrow">今日の一曲を置いていく</div>
+    <div class="lang-toggle">
+      <button id="btn-ja" onclick="setLang('ja')">日本語</button>
+      <button id="btn-en" onclick="setLang('en')">English</button>
+    </div>
 
-        <h1>
-          One<br />Song
-        </h1>
-
-        <p class="lead">
-          今日の気分を、一曲だけ。<br />
-          OneSongは、その日に聴きたかった曲を静かに置いていく音楽アプリです。
-        </p>
-
-        <div class="actions">
-          <a class="button primary" href="#">
-            App Store 準備中
-          </a>
-
-          <a class="button secondary" href="/privacy.html">
-            詳しく見る
-          </a>
-        </div>
-      </div>
-
-      <div class="art">
-        <div class="art-card">
-          <div class="wave">
-            <div class="dot"></div>
-            <div class="bar b1"></div>
-            <div class="bar b2"></div>
-            <div class="bar b3"></div>
-            <div class="bar b4"></div>
-            <div class="bar b5"></div>
-            <div class="bar b6"></div>
-            <div class="bar b7"></div>
-            <div class="dot"></div>
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow" id="eyebrow"></div>
+          <h1 id="title"></h1>
+          <p class="hero-subtitle" id="subtitle"></p>
+          <div class="hero-actions">
+            <a class="primary-cta" id="cta-primary" href="#"></a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <div class="footer">
-      © OneSong
-    </div>
-  </main>
+        <div class="phone-card" aria-hidden="true">
+          <div class="phone-screen">
+            <div class="mock-header" id="mock-app-title"></div>
+            <div class="mock-budget-card">
+              <div class="mock-label" id="mock-remaining-label"></div>
+              <div class="mock-amount" id="mock-amount"></div>
+              <p id="mock-remaining-caption"></p>
+              <div class="mock-progress"><span></span></div>
+            </div>
+            <div class="mock-life-card">
+              <div class="mock-label" id="mock-life-label"></div>
+              <div class="mock-life-title" id="mock-life-title"></div>
+              <p id="mock-life-caption"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features" aria-label="features">
+        <div class="feature-card">
+          <div class="feature-icon">⏳</div>
+          <h2 id="feature-days-title"></h2>
+          <p id="feature-days-body"></p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h2 id="feature-pace-title"></h2>
+          <p id="feature-pace-body"></p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h2 id="feature-widget-title"></h2>
+          <p id="feature-widget-body"></p>
+        </div>
+      </section>
+    </main>
+
+    <p class="footer-note" id="footer-note"></p>
+  </div>
+
+  <script>
+    const texts = {
+      ja: {
+        title: '支出のペースから\n「あと何日もつか」がわかる。',
+        subtitle: '財布の余命は、支出を記録するだけで残り予算と使える日数を見える化するシンプルな家計管理アプリです。',
+        eyebrow: '財布の余命',
+        primaryCta: 'App Storeで見る',
+        secondaryCta: 'プライバシーポリシー',
+        privacy: 'プライバシーポリシー',
+        terms: '利用規約',
+        contact: 'お問い合わせ',
+        mockAppTitle: '財布の余命',
+        mockRemainingLabel: 'この期間の残り予算',
+        mockAmount: '¥13,800',
+        mockRemainingCaption: 'この期間で今使える残りのお金',
+        mockLifeLabel: '財布の余命',
+        mockLifeTitle: 'あと約9日分',
+        mockLifeCaption: 'このペースで使った場合の目安',
+        featureDaysTitle: 'あと何日もつか',
+        featureDaysBody: '今の支出ペースから、残り予算が何日分あるかを自動で計算します。',
+        featurePaceTitle: '支出ペースを見える化',
+        featurePaceBody: '残り予算・カテゴリ別の使いすぎ・月の進み具合をまとめて確認できます。',
+        featureWidgetTitle: 'ウィジェットで確認',
+        featureWidgetBody: 'アプリを開かなくても、ホーム画面から残り予算をすぐ確認できます。',
+        footerNote: 'No ads. Simple spending awareness, one step at a time.'
+      },
+      en: {
+        title: 'See how long\nyour money will last.',
+        subtitle: 'Wallet Days is a simple budgeting app that shows your remaining budget and how many days it can last based on your current spending pace.',
+        eyebrow: 'Wallet Days',
+        primaryCta: 'View on App Store',
+        secondaryCta: 'Privacy Policy',
+        privacy: 'Privacy Policy',
+        terms: 'Terms of Use',
+        contact: 'Contact',
+        mockAppTitle: 'Wallet Days',
+        mockRemainingLabel: 'Remaining budget',
+        mockAmount: '$138.00',
+        mockRemainingCaption: 'Money left for this period',
+        mockLifeLabel: 'Wallet life',
+        mockLifeTitle: 'About 9 days left',
+        mockLifeCaption: 'Estimated at your current pace',
+        featureDaysTitle: 'Days left at your pace',
+        featureDaysBody: 'Automatically estimate how many days your remaining budget can last.',
+        featurePaceTitle: 'Understand your pace',
+        featurePaceBody: 'Check your remaining budget, category overspending, and monthly progress at a glance.',
+        featureWidgetTitle: 'Home screen widget',
+        featureWidgetBody: 'Quickly check your remaining budget without opening the app.',
+        footerNote: 'No ads. Simple spending awareness, one step at a time.'
+      }
+    };
+
+    function setLang(lang) {
+      try { localStorage.setItem('lang', lang); } catch(e) {}
+      applyLang(lang);
+    }
+
+    function applyLang(lang) {
+      const t = texts[lang];
+      document.documentElement.lang = lang;
+      document.getElementById('title').innerText = t.title;
+      document.getElementById('subtitle').innerText = t.subtitle;
+
+      document.getElementById('eyebrow').innerText = t.eyebrow;
+      document.getElementById('cta-primary').innerText = t.primaryCta;
+      document.getElementById('mock-app-title').innerText = t.mockAppTitle;
+      document.getElementById('mock-remaining-label').innerText = t.mockRemainingLabel;
+      document.getElementById('mock-amount').innerText = t.mockAmount;
+      document.getElementById('mock-remaining-caption').innerText = t.mockRemainingCaption;
+      document.getElementById('mock-life-label').innerText = t.mockLifeLabel;
+      document.getElementById('mock-life-title').innerText = t.mockLifeTitle;
+      document.getElementById('mock-life-caption').innerText = t.mockLifeCaption;
+      document.getElementById('feature-days-title').innerText = t.featureDaysTitle;
+      document.getElementById('feature-days-body').innerText = t.featureDaysBody;
+      document.getElementById('feature-pace-title').innerText = t.featurePaceTitle;
+      document.getElementById('feature-pace-body').innerText = t.featurePaceBody;
+      document.getElementById('feature-widget-title').innerText = t.featureWidgetTitle;
+      document.getElementById('feature-widget-body').innerText = t.featureWidgetBody;
+      document.getElementById('footer-note').innerText = t.footerNote;
+
+      // toggle buttons
+      const btnJa = document.getElementById('btn-ja');
+      const btnEn = document.getElementById('btn-en');
+      btnJa.classList.toggle('active', lang === 'ja');
+      btnEn.classList.toggle('active', lang === 'en');
+
+      // nav labels
+      document.querySelectorAll('[data-ja][data-en]').forEach((el) => {
+        el.textContent = lang === 'ja' ? el.dataset.ja : el.dataset.en;
+      });
+    }
+
+    const browserLang = (navigator.language || 'ja').toLowerCase().startsWith('en') ? 'en' : 'ja';
+    const savedLang = localStorage.getItem('lang') || browserLang;
+    applyLang(savedLang);
+  </script>
 </body>
 </html>
